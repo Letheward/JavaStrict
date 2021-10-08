@@ -2,15 +2,20 @@
 
 ## Rules
 
-- Must use `"use strict"`.
-- Don't use `function`, only use `=>` to declare functions
-- `const` for functions, `let` or `const` for variables
+- Must use `"use strict"`
 - Don't use `var`
-- Don't use `this`
-- Don't use `class`
-- Don't use `==` or `!=`, use `===` and `!==`
+- Don't use `function`, use `=>` to declare functions
+- Use `const` for functions, `let` or `const` for variables
+- Don't use `func()` sugar for functions in objects
+- Don't use `arguments`, use `...`
+- Don't use `this`, `class`, `get`, `set`
+- Don't use `==`, `!=`
+- Don't use `for`...`in`
+- Don't use `function*`, `yield`, `yield*`
+- Don't use `with`
+- Don't use exceptions (`try`, `catch`, `throw`, `finally`), **except** for dealing with API
 - Only do closure where it helped, not to show off your FP knowledge
-- Use object as namespace to group functions (when necessary)
+- Use object as namespace to group functions (when necessary) 
 
 ## Examples
 
@@ -67,4 +72,10 @@ const Hero = () => {
 > Note:  
 > Some browsers may optimize ordinary OOP/constructor version better, maybe because the js engine are much familiar with that usage.  
 > However, primary concern of JavaStrict is to write clean, safe and understandable code, if you want more performance, maybe you should use [WASM](https://en.wikipedia.org/wiki/WebAssembly) instead of optimizing javascript.  
-> (this style actually performs much better than OOP in low level languages due to no object overhead and alternative cache friendier data structures and algorithms, see [Data-Oriented Design](https://en.wikipedia.org/wiki/Data-oriented_design)).
+> (this style actually performs much better than OOP in low level languages due to no object overhead and alternative cache friendlier data structures and algorithms, see [Data-Oriented Design](https://en.wikipedia.org/wiki/Data-oriented_design)).
+
+## See Also
+
+- [Jessie](https://github.com/endojs/Jessie), another subset of ECMAScript
+- [What is "this"](https://www.youtube.com/watch?v=kb0Af7dzCTs), tips/rant of `this`
+- [Orthodox C++](https://gist.github.com/bkaradzic/2e39896bc7d8c34e042b), C++ subset
