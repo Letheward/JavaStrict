@@ -14,7 +14,9 @@
 - Don't use `function*`, `yield`, `yield*`
 - Don't use `with`
 - Don't use exceptions (`try`, `catch`, `throw`, `finally`), **except** for dealing with API
-- Only do closure where it helped, not to show off your FP knowledge
+- Don't use multiple line IIFE (Immediately Invoked Function Expression), if you want to hide a long function or do recursion, just create a scope
+- Avoid closure as possible, only use it where it helped
+- **DO NOT** use closure to emulate private methods
 - Use object as namespace to group functions (when necessary) 
 
 ## Examples
@@ -23,9 +25,10 @@ See `demo/bouncing-balls`, compare wtih [Bouncing Ball](https://developer.mozill
 
 ## No OOP?
 
-> the equivalent of constructor is below, actually looks similiar to `struct` in C.  
+> the equivalents of constructor are below, actually looks similiar to `struct` in C.  
+> `this` in those function will point to `Window`, so there can't be "member functions".
 ~~~ js
-// `this` in the function will point to `Window`, so there can't be member functions.
+// init with 0
 const Vector3 = () => ({
     x: 0,
     y: 0,
@@ -34,6 +37,7 @@ const Vector3 = () => ({
 ~~~
 
 ~~~ js
+// init with args
 const Vector3 = (x, y, z) => ({
     x, y, z
 })
@@ -56,7 +60,7 @@ const Person = () => ({
 ~~~ js
 const Sprite = () => ({
     actor: Person(),
-    pos: Vector3()
+    pos: Vector3(),
 })
 ~~~
 
@@ -67,6 +71,20 @@ const Hero = () => {
     m.hp = 100
     return m
 }
+~~~
+
+- Works on Array too:
+~~~ js
+const Vector4 = (x, y, z, w) => ([
+    x, y, z, w
+])
+
+const Matrix4 = () => ([
+    Vector4(1, 0, 0, 0),
+    Vector4(0, 1, 0, 0),
+    Vector4(0, 0, 1, 0),
+    Vector4(0, 0, 0, 1),
+])
 ~~~
 
 > Note:  

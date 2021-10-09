@@ -29,20 +29,6 @@ const Hero = () => {
     return m
 }
 
-
-/* ==== Main ==== */
-
-{
-    const Vector3 = (x, y, z) => ({
-        x,
-        y,
-        z
-    })
-
-    let c = Vector3(1, 2, 3)
-    console.log(c)
-}
-
 {
     let p = Person()
     let q = Person()
@@ -72,5 +58,37 @@ const Hero = () => {
 {
     let h = Hero()
     console.log(h)
+}
+
+{
+    const Vector4 = (x, y, z, w) => ({
+        x, y, z, w
+    })
+
+    const Matrix4 = (a, b, c, d) => ({
+        v0: Vector4(a, b, c, d),
+        v1: Vector4(b, c, d, a),
+        v2: Vector4(b, c, d),
+        v3: Vector4(),
+    })
+
+    console.log(Matrix4(1, 2, 3, 4))
+}
+
+{
+    const Vector4 = (x, y, z, w) => ([
+        x, y, z, w
+    ])
+
+    const Matrix4 = () => ([
+        Vector4(1, 0, 0, 0),
+        Vector4(0, 1, 0, 0),
+        Vector4(0, 0, 1, 0),
+        Vector4(0, 0, 0, 1),
+    ])
+    
+    console.log(Vector4(1, 2, 3, 4))
+    console.log(Matrix4())
+    console.log(Matrix4()[2][2])
 }
 
