@@ -10,14 +10,12 @@
 - Don't use `arguments`, use `...`
 - Don't use `this`, `class`, `get`, `set`
 - Don't use `==`, `!=`
-- Don't use `for`...`in`
 - Don't use `function*`, `yield`, `yield*`
 - Don't use `with`
 - Don't use exceptions (`try`, `catch`, `throw`, `finally`), **except** for dealing with API
 - Don't use multiple line IIFE (Immediately Invoked Function Expression), if you want to hide a long function or do recursion, just create a scope
-- Avoid closure as possible, only use it where it helped
-- **DO NOT** use closure to emulate private methods
-- Use object as namespace to group functions (when necessary) 
+- **DO NOT** use closure to emulate private member and methods
+- Use object as namespace to group relative functions (when necessary) 
 
 ## Examples
 
@@ -75,22 +73,35 @@ const Hero = () => {
 
 - Works on Array too:
 ~~~ js
-const Vector4 = (x, y, z, w) => ([
+const Vector4 = (x, y, z, w) => [
     x, y, z, w
-])
+]
 
-const Matrix4 = () => ([
+const Matrix4 = () => [
     Vector4(1, 0, 0, 0),
     Vector4(0, 1, 0, 0),
     Vector4(0, 0, 1, 0),
     Vector4(0, 0, 0, 1),
-])
+]
 ~~~
 
 > Note:  
 > Some browsers may optimize ordinary OOP/constructor version better, maybe because the js engine are much familiar with that usage.  
 > However, primary concern of JavaStrict is to write clean, safe and understandable code, if you want more performance, maybe you should use [WASM](https://en.wikipedia.org/wiki/WebAssembly) instead of optimizing javascript.  
 > (this style actually performs much better than OOP in low level languages due to no object overhead and alternative cache friendlier data structures and algorithms, see [Data-Oriented Design](https://en.wikipedia.org/wiki/Data-oriented_design)).
+
+## Functional?
+
+> You can but you shouldn't.  
+> Imperative first, only use FP features to help.
+
+**DO NOT** write stuff like this:
+~~~ js
+const dec = n => f => x =>
+    n(g => h => h(g(f))) 
+        (u => x) 
+            (u => u)
+~~~
 
 ## See Also
 
