@@ -24,7 +24,7 @@ See `demo/bouncing-balls`, compare wtih [Bouncing Ball](https://developer.mozill
 ## No OOP?
 
 > the equivalents of constructor are below, actually looks similiar to `struct` in C.  
-> `this` in those function will point to `Window`, so there can't be "member functions".
+> `this` in those functions will point to `Window`, so "methods" in those are pointless, just write them as normal functions that take this "type".
 ~~~ js
 // init with 0
 const Vector3 = () => ({
